@@ -1,0 +1,41 @@
+.terminal {
+  padding: 1rem;
+
+  .terminal-input-form {
+    input {
+      margin-left: 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      background: transparent;
+      outline: none;
+      border: none;
+
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .terminal-input-form {
+    display: block;
+
+    input {
+      margin-top: 0.25rem;
+      margin-left: 0.25rem !important;
+      width: 85% !important;
+    }
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .terminal-input-form {
+    display: flex;
+  }
+
+  .terminal-input-br {
+    display: none;
+  }
+}

@@ -1,0 +1,52 @@
+<div class="terminal">
+  <ng-container *ngFor="let commandItem of commandItems">
+    <form class="terminal-input-form">
+      <label for="terminal-input">
+        <span class="profile">visitor</span>@<span class="terminal-label">terminal.itisrajya.net</span>:~$
+        <span class="terminal-input-br">
+          <br />
+          <span> > </span>
+        </span>
+      </label>
+      <input
+        #commandInputs
+        title="terminal-input"
+        type="text"
+        autofocus
+        spellcheck="false"
+        autocapitalize="off"
+        class="font-family-monospace"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="commandItem.command"
+        [disabled]="commandItem.disabled"
+        (input)="getHints(commandItem.id)"
+        (keydown.enter)="executeCommand(commandItem.id)"
+        (keydown.tab)="$event.preventDefault(); autoComplete(commandItem.id)"
+        (keydown.control.i)="$event.preventDefault(); autoComplete(commandItem.id)"
+      />
+    </form>
+
+    <div *ngIf="commandItem.entered">
+      <div *ngIf="commandItem.exists">
+        <app-about *ngIf="commandItem.command === 'about'"></app-about>
+        <app-certificates *ngIf="commandItem.command === 'certificates'"></app-certificates>
+        <app-education *ngIf="commandItem.command === 'education'"></app-education>
+        <app-help *ngIf="commandItem.command === 'help'"></app-help>
+        <app-interests *ngIf="commandItem.command === 'interests'"></app-interests>
+        <app-projects *ngIf="commandItem.command === 'projects'"></app-projects>
+        <app-skills *ngIf="commandItem.command === 'skills'"></app-skills>
+        <app-themes *ngIf="commandItem.command.startsWith('themes')" [command]="commandItem.command"></app-themes>
+        <app-welcome *ngIf="commandItem.command === 'welcome'"></app-welcome>
+        <app-work *ngIf="commandItem.command === 'work'"></app-work>
+
+        <div class="my-2" *ngIf="commandItem.command === 'gui'">
+          Portfolio website is under development... Coming soon!
+        </div>
+      </div>
+
+      <div *ngIf="!commandItem.exists">
+        <app-not-found [command]="commandItem.command"></app-not-found>
+      </div>
+    </div>
+  </ng-container>
+</div>

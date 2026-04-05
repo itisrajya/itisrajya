@@ -1,0 +1,16 @@
+<div class="projects my-2">
+  Though a majority of my projects are offline or under confidentiality.<br class="bg-screen" />
+  But here are some specific ones I can showcase.
+
+  <ol>
+    <li *ngFor="let project of projects">
+      <b> {{ project.name }} </b> <span class="f-14"> ({{ project.date }}) </span>
+      <div class="mb-1 tech-wrapper">
+        <app-chip *ngFor="let tech of project.technologies" [value]="tech"></app-chip>
+      </div>
+      <ul>
+        <li *ngFor="let pointer of project.pointers" [innerHTML]="pointer"></li>
+      </ul>
+    </li>
+  </ol>
+</div>

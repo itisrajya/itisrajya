@@ -1,0 +1,17 @@
+<div [class.d-none]="!showThemes && !showOnlyUsage" class="my-2">
+  <ng-container *ngIf="showThemes">
+    <span *ngFor="let theme of themes"> {{ theme }} </span>
+    <ng-container *ngTemplateOutlet="usage"></ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="showOnlyUsage">
+    <ng-container *ngTemplateOutlet="usage"></ng-container>
+  </ng-container>
+
+  <ng-template #usage>
+    <p>
+      <span> Usage: themes set &lt;theme-name&gt; </span> <br />
+      <span> eg: themes set light </span>
+    </p>
+  </ng-template>
+</div>

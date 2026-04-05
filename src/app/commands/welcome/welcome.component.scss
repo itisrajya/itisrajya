@@ -1,0 +1,19 @@
+.welcome {
+  p {
+    margin: 0.1rem 0;
+  }
+
+  .pre-formatted-name {
+    display: flex;
+
+    pre:nth-child(2) {
+      margin-left: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  pre {
+    display: none;
+  }
+}
