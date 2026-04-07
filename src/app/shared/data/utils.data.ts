@@ -1,7 +1,7 @@
 import { ECommandType } from '../models/commands.model';
 import { ETheme } from '../models/themes.model';
 
-export const email = 'itisrajya@gmail.com';
+export const email = 'itisrajya@zohomail.in';
 export const cvURL = '';
 export const linkedInProfileURL = 'https://www.linkedin.com/in/itisrajya/';
 export const twitterProfileURL = 'https://x.com/itisrajya';
