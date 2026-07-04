@@ -5,6 +5,7 @@ import {
   ElementRef,
   HostListener,
   OnDestroy,
+  OnInit,
   QueryList,
   ViewChildren
 } from '@angular/core';
@@ -19,7 +20,7 @@ import { ECommandType, ICommandItem } from 'src/app/shared/models/commands.model
   styleUrls: ['./terminal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TerminalComponent implements AfterViewInit, OnDestroy {
+export class TerminalComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren('commandInputs') commandInputs!: QueryList<ElementRef>;
   commandItems: ICommandItem[] = [
     {
@@ -43,24 +44,58 @@ export class TerminalComponent implements AfterViewInit, OnDestroy {
   autoFocusSubscription!: Subscription;
 
   @HostListener('document:keydown.arrowdown', ['$event'])
-  onArrowDown(event: KeyboardEvent) {
-    event.preventDefault();
+  onArrowDown(event: Event) {
+    const keyboardEvent = event as KeyboardEvent;
+
+    keyboardEvent.preventDefault();
     this.focusOnInputField();
     this.goToNextStep();
   }
 
   @HostListener('document:keydown.arrowup', ['$event'])
-  onArrowUp(event: KeyboardEvent) {
-    event.preventDefault();
+  onArrowUp(event: Event) {
+    const keyboardEvent = event as KeyboardEvent;
+
+    keyboardEvent.preventDefault();
     this.focusOnInputField();
     this.goToPreviousStep();
   }
 
   @HostListener('document:keydown.control.l', ['$event'])
-  onControlL(event: KeyboardEvent) {
-    event.preventDefault();
+  onControlL(event: Event) {
+    const keyboardEvent = event as KeyboardEvent;
+
+    keyboardEvent.preventDefault();
     this.focusOnInputField();
     this.clearTerminal();
+  }
+
+  ngOnInit(): void {
+    const params = new URLSearchParams(window.location.search);
+
+    const command = params.get('command');
+    const sessionId = params.get('sessionId');
+
+    if (command === 'chat' && sessionId) {
+      this.commandItems = [
+        {
+          id: 0,
+          disabled: true,
+          command: ECommandType.CHAT,
+          exists: true,
+          entered: true
+        },
+        {
+          id: 1,
+          disabled: false,
+          command: ECommandType.EMPTY,
+          exists: true,
+          entered: false
+        }
+      ];
+
+      this.currentCommandId = 1;
+    }
   }
 
   ngAfterViewInit(): void {

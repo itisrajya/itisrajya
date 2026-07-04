@@ -1,0 +1,157 @@
+.terminal-chat {
+  background: #050505;
+  border: 1px solid #00ff7f;
+  border-radius: 8px;
+  padding: 18px;
+  color: #00ff7f;
+  font-family: Consolas, 'Courier New', monospace;
+  box-shadow: 0 0 15px rgba(0, 255, 120, 0.15);
+}
+
+.terminal-header {
+  border-bottom: 1px solid rgba(0, 255, 120, 0.25);
+  padding-bottom: 12px;
+}
+
+.terminal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #7cfc00;
+  margin-bottom: 10px;
+}
+
+.terminal-meta div {
+  margin: 4px 0;
+  color: #5dff9d;
+}
+
+.chat-thread {
+  margin-top: 15px;
+  max-height: 450px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.chat-thread::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-thread::-webkit-scrollbar-thumb {
+  background: #00ff7f;
+}
+
+.chat-message {
+  margin-bottom: 18px;
+  animation: fadeIn 0.25s ease;
+}
+
+.message-label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  opacity: 0.85;
+}
+
+.message-content {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.user-message .message-label {
+  color: #00d9ff;
+}
+
+.user-message .message-content {
+  color: #8de8ff;
+}
+
+.admin-message .message-label {
+  color: #00ff7f;
+}
+
+.admin-message .message-content {
+  color: #d8ffd8;
+}
+
+.terminal-placeholder {
+  color: rgba(0, 255, 120, 0.45);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.terminal-warning {
+  border: 1px solid #ff5555;
+  color: #ff6666;
+  background: rgba(255, 0, 0, 0.08);
+  padding: 12px;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.terminal-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid rgba(0, 255, 120, 0.25);
+  padding-top: 15px;
+}
+
+.prompt {
+  color: #00ff7f;
+  white-space: nowrap;
+}
+
+.terminal-input input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #00ff7f;
+  outline: none;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.terminal-input input::placeholder {
+  color: rgba(0, 255, 120, 0.4);
+}
+
+.terminal-input button {
+  background: transparent;
+  border: 1px solid #00ff7f;
+  color: #00ff7f;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.2s;
+}
+
+.terminal-input button:hover:not(:disabled) {
+  background: #00ff7f;
+  color: #000;
+}
+
+.terminal-input button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.terminal-loading {
+  color: #00ff7f;
+}
+
+.chat-thread {
+  max-height: 450px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

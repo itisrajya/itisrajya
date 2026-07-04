@@ -3,6 +3,7 @@ import { ECommandType } from '../models/commands.model';
 export const availableCommands = [
   { name: ECommandType.ABOUT, description: 'about Rajya Vardhan', parent: null },
   { name: ECommandType.CERTIFICATES, description: 'my certifications', parent: null },
+  { name: ECommandType.CHAT, description: 'chat with me', parent: null },
   { name: ECommandType.CLEAR, description: 'clear terminal', parent: null },
   { name: ECommandType.CV, description: 'download my curriculum vitae', parent: null },
   { name: ECommandType.EDUCATION, description: 'my education background', parent: null },

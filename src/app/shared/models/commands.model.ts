@@ -10,6 +10,7 @@ export enum ECommandType {
   ABOUT = 'about',
   EMPTY = '',
   CLEAR = 'clear',
+  CHAT = 'chat',
   CERTIFICATES = 'certificates',
   CV = 'cv',
   EDUCATION = 'education',

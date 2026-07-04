@@ -38,6 +38,7 @@
         <app-themes *ngIf="commandItem.command.startsWith('themes')" [command]="commandItem.command"></app-themes>
         <app-welcome *ngIf="commandItem.command === 'welcome'"></app-welcome>
         <app-work *ngIf="commandItem.command === 'work'"></app-work>
+        <app-chat *ngIf="commandItem.command === 'chat'"></app-chat>
 
         <div class="my-2" *ngIf="commandItem.command === 'gui'">
           Portfolio website is under development... Coming soon!
