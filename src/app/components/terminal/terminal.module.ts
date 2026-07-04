@@ -14,6 +14,7 @@ import { SkillsModule } from '../../commands/skills/skills.module';
 import { WorkModule } from '../../commands/work/work.module';
 import { ThemesModule } from '../../commands/themes/themes.module';
 import { ChipModule } from '../chip/chip.module';
+import { ChatModule } from 'src/app/commands/chat/chat.modeule';
 
 @NgModule({
   declarations: [TerminalComponent],
@@ -31,7 +32,8 @@ import { ChipModule } from '../chip/chip.module';
     SkillsModule,
     WorkModule,
     ThemesModule,
-    ChipModule
+    ChipModule,
+    ChatModule
   ],
   exports: [TerminalComponent]
 })

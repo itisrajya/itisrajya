@@ -1,0 +1,65 @@
+<div class="terminal-chat">
+  <div *ngIf="!chatSessionId" class="terminal-loading text-center py-3">
+    <span class="spinner-border spinner-border-sm"></span>
+    {{ isAdminView ? 'Loading chat session...' : 'Starting a new chat session...' }}
+  </div>
+
+  <ng-container *ngIf="chatSessionId">
+    <div class="terminal-header mb-3">
+      <div class="terminal-title">
+        {{ isAdminView ? 'Admin Chat Session' : 'Visitor Chat Session' }}
+      </div>
+
+      <div class="terminal-meta">
+        <div>> STATUS : {{ chatStatus }}</div>
+        <div>> SESSION : {{ chatSessionId }}</div>
+        <div>> MODE : {{ isAdminView ? 'ADMINISTRATOR' : 'VISITOR' }}</div>
+      </div>
+    </div>
+
+    <div class="chat-thread" #chatThread>
+      <div
+        *ngFor="let message of chatMessages"
+        class="chat-message"
+        [ngClass]="{
+          'user-message': message.role === 'user',
+          'admin-message': message.role === 'admin'
+        }"
+      >
+        <div class="message-label">
+          {{ message.role === 'admin' ? 'admin@terminal:~$' : 'visitor@terminal:~$' }}
+        </div>
+
+        <div class="message-content">
+          {{ message.content }}
+        </div>
+      </div>
+
+      <div *ngIf="!chatMessages.length" class="terminal-placeholder">
+        >
+        {{ isAdminView ? 'Waiting for visitor...' : 'Start typing...' }}
+      </div>
+    </div>
+
+    <div *ngIf="chatStatus === 'expired'" class="terminal-warning mt-3">
+      <div>> SESSION_EXPIRED</div>
+      <div>Connection closed due to inactivity.</div>
+    </div>
+
+    <form *ngIf="chatStatus !== 'expired'" class="chat-form mt-3" (ngSubmit)="sendChatMessage()">
+      <div class="terminal-input">
+        <span class="prompt"> {{ isAdminView ? 'admin' : 'visitor' }}@terminal:~$ </span>
+
+        <input
+          type="text"
+          name="message"
+          [(ngModel)]="chatDraftMessage"
+          placeholder="Type message..."
+          autocomplete="off"
+        />
+
+        <button type="submit" [disabled]="!chatDraftMessage.trim()">SEND</button>
+      </div>
+    </form>
+  </ng-container>
+</div>
