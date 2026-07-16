@@ -1,3 +1,8 @@
+.terminal-chat,
+.terminal-chat * {
+  box-sizing: border-box;
+}
+
 .terminal-chat {
   background: #050505;
   border: 1px solid #00ff7f;
@@ -6,6 +11,8 @@
   color: #00ff7f;
   font-family: Consolas, 'Courier New', monospace;
   box-shadow: 0 0 15px rgba(0, 255, 120, 0.15);
+  width: 100%;
+  overflow: hidden;
 }
 
 .terminal-header {
@@ -23,6 +30,7 @@
 .terminal-meta div {
   margin: 4px 0;
   color: #5dff9d;
+  word-break: break-all;
 }
 
 .chat-thread {
@@ -30,6 +38,7 @@
   max-height: 450px;
   overflow-y: auto;
   padding-right: 8px;
+  scroll-behavior: smooth;
 }
 
 .chat-thread::-webkit-scrollbar {
@@ -103,6 +112,7 @@
 
 .terminal-input input {
   flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
   color: #00ff7f;
@@ -123,6 +133,7 @@
   cursor: pointer;
   font-family: inherit;
   transition: 0.2s;
+  flex-shrink: 0;
 }
 
 .terminal-input button:hover:not(:disabled) {
@@ -143,6 +154,22 @@
   max-height: 450px;
   overflow-y: auto;
   scroll-behavior: smooth;
+}
+
+@media (max-width: 480px) {
+  .terminal-input {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .prompt {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .terminal-input input {
+    font-size: 16px;
+  }
 }
 
 @keyframes fadeIn {
